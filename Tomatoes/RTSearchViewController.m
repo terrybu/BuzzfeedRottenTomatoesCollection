@@ -11,6 +11,7 @@
 #import "RTCollectionViewCell.h"
 #import "RTMovie.h"
 #import <UIImageView+AFNetworking.h>
+#import "RTMovieDetailViewController.h"
 
 @interface RTSearchViewController ()
 
@@ -55,6 +56,14 @@
     [cell.imageView setImageWithURL:movie.thumbnailURL];
     
     return cell;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"detailSegue"]) {
+        RTMovieDetailViewController *destViewController = (RTMovieDetailViewController *)segue.destinationViewController;
+        NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
+        destViewController.movie = [self.movies objectAtIndex:indexPath.row];
+    }
 }
 
 
