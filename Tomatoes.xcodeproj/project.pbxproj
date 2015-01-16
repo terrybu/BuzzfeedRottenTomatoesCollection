@@ -27,6 +27,7 @@
 		40F332C018777BFF00A0A70F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F332A218777BFE00A0A70F /* UIKit.framework */; };
 		40F332C818777BFF00A0A70F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 40F332C618777BFF00A0A70F /* InfoPlist.strings */; };
 		40F332CA18777BFF00A0A70F /* TomatoesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F332C918777BFF00A0A70F /* TomatoesTests.m */; };
+		AA68DA651A69C36B003EB1CA /* RTCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA68DA641A69C36B003EB1CA /* RTCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,8 @@
 		40F332C718777BFF00A0A70F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		40F332C918777BFF00A0A70F /* TomatoesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TomatoesTests.m; sourceTree = "<group>"; };
 		83CF8F11C56343518C8B353E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA68DA631A69C36B003EB1CA /* RTCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCollectionViewCell.h; sourceTree = "<group>"; };
+		AA68DA641A69C36B003EB1CA /* RTCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTCollectionViewCell.m; sourceTree = "<group>"; };
 		B8AA1E1B4E3F7F0BAB474CFE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,6 +133,8 @@
 		4002451E1879C90000EE2892 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				AA68DA631A69C36B003EB1CA /* RTCollectionViewCell.h */,
+				AA68DA641A69C36B003EB1CA /* RTCollectionViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -363,6 +368,7 @@
 				40F332AB18777BFE00A0A70F /* main.m in Sources */,
 				400245191878F5A600EE2892 /* RTResponseSerializer.m in Sources */,
 				4002451618787E9800EE2892 /* RTRottenTomatoesClient.m in Sources */,
+				AA68DA651A69C36B003EB1CA /* RTCollectionViewCell.m in Sources */,
 				40024527187A044E00EE2892 /* RTMovieDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

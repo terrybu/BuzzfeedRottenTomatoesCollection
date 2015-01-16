@@ -10,8 +10,7 @@
 
 #import "RTResponseSerializer.h"
 
-#warning YOU NEED TO GET AN API KEY FROM "http://developer.rottentomatoes.com/member/register"
-NSString * const kAPIKey = @"";
+NSString * const kAPIKey = @"msu9qkjy3uqb7cdmtfh54bku";
 
 NSString * const baseURLString = @"http://api.rottentomatoes.com/api/public/v1.0/";
 
@@ -46,7 +45,8 @@ NSString * const baseURLString = @"http://api.rottentomatoes.com/api/public/v1.0
    parameters:params
       success:^(NSURLSessionDataTask *task, id responseObject) {
           success(responseObject);
-      } failure:^(NSURLSessionDataTask *task, NSError *error) {
+      }
+      failure:^(NSURLSessionDataTask *task, NSError *error) {
           failure(error);
       }];
 }

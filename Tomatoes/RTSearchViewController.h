@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RTSearchViewController : UIViewController
+@interface RTSearchViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+//make sure UISearchDisplay, etc protocols
+
+
+@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
+
 
 @end

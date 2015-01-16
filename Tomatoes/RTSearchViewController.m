@@ -7,8 +7,14 @@
 //
 
 #import "RTSearchViewController.h"
+#import "RTRottenTomatoesClient.h"
+#import "RTCollectionViewCell.h"
+#import "RTMovie.h"
+#import <UIImageView+AFNetworking.h>
 
 @interface RTSearchViewController ()
+
+@property (nonatomic, strong) NSArray *movies;
 
 @end
 
@@ -16,10 +22,42 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.movies = [[NSArray alloc]init];
+    RTRottenTomatoesClient *client = [RTRottenTomatoesClient sharedInstance];
+    
+    [client searchMoviesWithQuery:@"Fight Club" success:^(NSArray *movies) {
+        self.movies = movies;
+        NSLog(@"%@", self.movies.description);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.collectionView reloadData];
+        });
+    }
+    failure:^(NSError *error) {
+        NSLog(@"ERROR: %@", error);
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.movies.count;
+}
+
+- (RTCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    RTCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+
+    RTMovie *movie = [self.movies objectAtIndex:indexPath.row];
+    
+    [cell.imageView setImageWithURL:movie.thumbnailURL];
+    
+    return cell;
+}
+
+
+
 
 @end
