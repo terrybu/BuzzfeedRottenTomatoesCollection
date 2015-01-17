@@ -1,15 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="yas-rB-cjT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Cw4-dz-7iK">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Page Root Controller-->
+        <scene sceneID="3k2-xi-bMG">
+            <objects>
+                <viewController id="Cw4-dz-7iK" customClass="RTPageRootController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hEz-fB-46L"/>
+                        <viewControllerLayoutGuide type="bottom" id="bbq-2I-4Ai"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2ag-jL-cAE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ngs-44-fUS"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IQ7-oI-soe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-624" y="65"/>
+        </scene>
         <!--Rotten Tomatoes App-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="RTSearchViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" id="vXZ-lx-hvc" customClass="RTSearchViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="s6L-Jf-QmF"/>
                         <viewControllerLayoutGuide type="bottom" id="xbI-Ey-eEr"/>
@@ -18,15 +37,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search for movies" translatesAutoresizingMaskIntoConstraints="NO" id="6fA-sg-d3v">
+                            <searchBar contentMode="redraw" placeholder="Search for movies" translatesAutoresizingMaskIntoConstraints="NO" id="6fA-sg-d3v">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="fEn-7Y-1hV"/>
                                 </connections>
                             </searchBar>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="scM-m0-xbk">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="scM-m0-xbk">
                                 <rect key="frame" x="0.0" y="44" width="320" height="460"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="460" id="bPY-Uf-7M3"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="rgO-KV-a5l">
                                     <size key="itemSize" width="106.5" height="135"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -41,12 +63,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="107" height="135"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ut4-gV-HY8">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ut4-gV-HY8">
                                                     <rect key="frame" x="0.0" y="0.0" width="107" height="135"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="Ut4-gV-HY8" firstAttribute="top" secondItem="iuN-CI-ewK" secondAttribute="top" id="3gs-w4-Cms"/>
+                                            <constraint firstItem="Ut4-gV-HY8" firstAttribute="leading" secondItem="iuN-CI-ewK" secondAttribute="leading" id="5wG-bY-Lkt"/>
+                                            <constraint firstAttribute="bottom" secondItem="Ut4-gV-HY8" secondAttribute="bottom" id="DMz-fs-cQO"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ut4-gV-HY8" secondAttribute="trailing" id="PPD-EJ-BsK"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="Ut4-gV-HY8" id="9CV-RU-hAa"/>
                                             <segue destination="kOP-Ts-Zau" kind="push" identifier="detailSegue" id="ME3-id-GHT"/>
@@ -60,6 +88,14 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="scM-m0-xbk" firstAttribute="top" secondItem="6fA-sg-d3v" secondAttribute="bottom" id="6ad-Hi-bJZ"/>
+                            <constraint firstItem="scM-m0-xbk" firstAttribute="trailing" secondItem="6fA-sg-d3v" secondAttribute="trailing" id="HeE-Dq-qHk"/>
+                            <constraint firstItem="scM-m0-xbk" firstAttribute="bottom" secondItem="xbI-Ey-eEr" secondAttribute="top" id="Wfh-ab-bEr"/>
+                            <constraint firstItem="scM-m0-xbk" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="WpB-JW-T6x"/>
+                            <constraint firstItem="scM-m0-xbk" firstAttribute="leading" secondItem="6fA-sg-d3v" secondAttribute="leading" id="bHy-5X-ebc"/>
+                            <constraint firstAttribute="trailing" secondItem="scM-m0-xbk" secondAttribute="trailing" id="bfg-Yy-hOP"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Rotten Tomatoes App" id="Zha-wp-Ej3">
                         <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="Spi-MH-b93">
@@ -67,11 +103,7 @@
                                 <action selector="refreshCollection:" destination="vXZ-lx-hvc" id="Va0-Wa-DNN"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="star22" id="V4l-p7-Sxh">
-                            <connections>
-                                <segue destination="u7l-r5-AMo" kind="push" identifier="favSegue" id="kcc-Rf-nx9"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="star22" id="V4l-p7-Sxh"/>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="scM-m0-xbk" id="6nS-5h-OOe"/>
@@ -80,12 +112,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="300" y="53"/>
+            <point key="canvasLocation" x="374" y="-69"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="dGr-PG-wWz">
             <objects>
-                <collectionViewController id="u7l-r5-AMo" customClass="RTFavCollectionViewController" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="FavoritesViewController" id="u7l-r5-AMo" customClass="RTFavCollectionViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="hS2-GX-hHJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -124,7 +156,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8le-sW-Hez" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="889" y="-661"/>
+            <point key="canvasLocation" x="368" y="587"/>
         </scene>
         <!--Movie Detail View Controller-->
         <scene sceneID="Tp0-m1-OsJ">
@@ -198,25 +230,52 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QWZ-C9-Tya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="889" y="53"/>
+            <point key="canvasLocation" x="1119" y="163"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="rpc-Hi-cdM">
+            <objects>
+                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="gLg-T6-pLw" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MKc-Xe-r9r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-624" y="-685"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="KPf-GZ-N8b">
+        <scene sceneID="8dr-O6-Cch">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yas-rB-cjT" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="secondNav" automaticallyAdjustsScrollViewInsets="NO" id="LY6-cF-Xd3" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="n9a-cZ-Jld">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="O5P-fw-gMS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="x1v-oA-hdL"/>
+                        <segue destination="u7l-r5-AMo" kind="relationship" relationship="rootViewController" id="Bxd-z4-HS0"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kyQ-MI-xfw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VhJ-oM-Vl4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-232" y="53"/>
+            <point key="canvasLocation" x="-192" y="587"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="FKD-Sj-de4">
+            <objects>
+                <navigationController storyboardIdentifier="firstNav" automaticallyAdjustsScrollViewInsets="NO" id="qe0-uk-uJ6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="ve4-yB-W24">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="hvx-Tt-k0L"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pet-zp-Ijm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-192" y="-69"/>
         </scene>
     </scenes>
     <resources>
@@ -228,6 +287,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="dtt-vk-szH"/>
+        <segue reference="ME3-id-GHT"/>
     </inferredMetricsTieBreakers>
 </document>
