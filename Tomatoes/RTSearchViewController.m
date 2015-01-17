@@ -24,11 +24,15 @@
 
 @implementation RTSearchViewController
 
+- (RTRottenTomatoesClient *) client {
+    if (_client == nil)
+        _client = [RTRottenTomatoesClient sharedInstance];
+    
+    return _client;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.client = [RTRottenTomatoesClient sharedInstance];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,7 +70,8 @@
 
     RTMovie *movie = [self.movies objectAtIndex:indexPath.row];
     
-    [cell.imageView setImageWithURL:movie.thumbnailURL];
+    NSURLRequest *imageRequest = [NSURLRequest requestWithURL:movie.thumbnailURL cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:60];
+    [cell.imageView setImageWithURLRequest:imageRequest placeholderImage:nil success:nil failure:nil];
     
     return cell;
 }
