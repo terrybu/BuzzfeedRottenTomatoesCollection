@@ -9,9 +9,9 @@
 #import "RTFavCollectionViewController.h"
 #import "RTSearchCollectionViewCell.h"
 #import "RTMovie.h"
-#import <UIImageView+AFNetworking.h>
 #import "RTFavCollectionViewCell.h"
 #import "RTMovieDetailViewController.h"
+#import <UIImageView+AFNetworking.h>
 
 @interface RTFavCollectionViewController ()
 
@@ -19,18 +19,12 @@
 
 @implementation RTFavCollectionViewController
 
-static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    
     // Do any additional setup after loading the view.
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,23 +46,18 @@ static NSString * const reuseIdentifier = @"Cell";
 
 #pragma mark <UICollectionViewDataSource>
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
-}
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.favManager.favorites.count;
 }
 
 - (RTFavCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    RTFavCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FavCell" forIndexPath:indexPath];
+    RTFavCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     
     RTMovie *movie = [self.favManager.favorites objectAtIndex:indexPath.row];
     
     NSURLRequest *imageRequest = [NSURLRequest requestWithURL:movie.thumbnailURL cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:60];
     [cell.imageView setImageWithURLRequest:imageRequest placeholderImage:nil success:nil failure:nil];
 
-    
     return cell;
 }
 

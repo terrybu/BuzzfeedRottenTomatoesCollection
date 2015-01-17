@@ -70,10 +70,6 @@
 
 #pragma mark Collection view delegate methods
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
-}
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.movies.count;
 }
@@ -104,7 +100,6 @@
     else if ([segue.identifier isEqualToString:@"favSegue"]) {
         RTFavCollectionViewController *favCVC = (RTFavCollectionViewController *)segue.destinationViewController;
         favCVC.favManager = self.favManager;
-        favCVC.client = self.client;
     }
 }
 

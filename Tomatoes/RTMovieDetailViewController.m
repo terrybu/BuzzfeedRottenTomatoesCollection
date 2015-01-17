@@ -7,8 +7,8 @@
 //
 
 #import "RTMovieDetailViewController.h"
-
 #import "UIImageView+AFNetworking.h"
+#import "RTFavCollectionViewController.h"
 
 @interface RTMovieDetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -24,15 +24,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIBarButtonItem *favoriteSaveButton;
-    favoriteSaveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
-                                                                   target:self
-                                                                   action:@selector(addTapped)];
-    self.navigationItem.rightBarButtonItem = favoriteSaveButton;
-    
     if (self.movie != nil) {
         [self configureViewWithMovie:self.movie];
     }
+    
+    if (![self.navigationController.viewControllers[1] isKindOfClass:[RTFavCollectionViewController class]]) {
+        UIBarButtonItem *favoriteSaveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
+                                                                                            target:self
+                                                                                            action:@selector(addTapped)];
+        self.navigationItem.rightBarButtonItem = favoriteSaveButton;
+    }
+
 }
 
 - (void)setMovie:(RTMovie *)movie {

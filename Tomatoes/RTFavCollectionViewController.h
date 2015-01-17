@@ -8,11 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "FavoritesManager.h"
-#import "RTRottenTomatoesClient.h"
 
 @interface RTFavCollectionViewController : UICollectionViewController
 
 @property (nonatomic, strong) FavoritesManager *favManager;
-@property (strong, nonatomic) RTRottenTomatoesClient *client;
 
 @end
