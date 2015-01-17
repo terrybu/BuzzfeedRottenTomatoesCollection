@@ -52,10 +52,13 @@
 
 - (void)addTapped {
     // @TODO: Add to Favorites!
-    
     [self.favManager.favorites addObject:self.movie];
-    NSLog(@"current favs count: %lu", (unsigned long)self.favManager.favorites.count);
-    NSLog(@"%@", self.favManager.favorites);
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.favManager.favorites];
+    [defaults setObject:data forKey:@"favorites"];
+    [defaults synchronize];
+
     [self.navigationController popViewControllerAnimated:YES];
 }
 

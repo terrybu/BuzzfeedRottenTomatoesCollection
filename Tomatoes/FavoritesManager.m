@@ -11,8 +11,18 @@
 @implementation FavoritesManager
 
 - (NSMutableOrderedSet *) favorites {
-    if (!_favorites)
-        _favorites = [[NSMutableOrderedSet alloc]init];
+
+    if (!_favorites) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        if ([defaults objectForKey:@"favorites"]) {
+            NSData *data = [defaults dataForKey:@"favorites"];
+            _favorites = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        }
+        else {
+            _favorites = [[NSMutableOrderedSet alloc]init];
+        }
+    }
+    
     return _favorites;
 }
 
