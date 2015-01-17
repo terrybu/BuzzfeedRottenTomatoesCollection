@@ -29,7 +29,6 @@
     
     [client searchMoviesWithQuery:@"Fight Club" success:^(NSArray *movies) {
         self.movies = movies;
-        NSLog(@"%@", self.movies.description);
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.collectionView reloadData];
         });
@@ -43,6 +42,16 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
+
+#pragma mark Search-Bar related methods
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    NSLog(@"search button clicked");
+}
+
+
+#pragma mark Collection view delegate methods
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.movies.count;
