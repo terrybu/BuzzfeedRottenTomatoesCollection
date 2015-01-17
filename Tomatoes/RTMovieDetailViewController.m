@@ -24,11 +24,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIBarButtonItem *favoriteButton;
-    favoriteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
+    UIBarButtonItem *favoriteSaveButton;
+    favoriteSaveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
                                                                    target:self
                                                                    action:@selector(addTapped)];
-    self.navigationItem.rightBarButtonItem = favoriteButton;
+    self.navigationItem.rightBarButtonItem = favoriteSaveButton;
     
     if (self.movie != nil) {
         [self configureViewWithMovie:self.movie];
@@ -54,7 +54,7 @@
     [self.favManager.favorites addObject:self.movie];
     NSLog(@"current favs count: %lu", (unsigned long)self.favManager.favorites.count);
     NSLog(@"%@", self.favManager.favorites);
-    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
