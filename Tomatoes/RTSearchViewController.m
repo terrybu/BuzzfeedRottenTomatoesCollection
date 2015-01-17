@@ -47,7 +47,7 @@
 #pragma mark Search-Bar related methods
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    NSLog(@"search button clicked");
+    
 }
 
 

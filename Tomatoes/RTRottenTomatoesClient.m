@@ -38,17 +38,25 @@ NSString * const baseURLString = @"http://api.rottentomatoes.com/api/public/v1.0
                       failure:(void (^)(NSError *))failure {
     
     //@TODO: apikey needs to be sent with everything, so factor this out.
-    NSDictionary *params = @{@"q" : query,
-                             @"apikey" : kAPIKey};
+//    NSDictionary *params = @{@"q" : query,
+//                             @"apikey" : kAPIKey};
     
-    [self GET:@"movies.json"
-   parameters:params
-      success:^(NSURLSessionDataTask *task, id responseObject) {
+    NSDictionary *params = @{@"q" : query};
+    
+    NSString *getString = [NSString stringWithFormat:@"movies.json?apikey=%@", kAPIKey];
+    
+    [self GET:getString
+        parameters:params
+        success:^(NSURLSessionDataTask *task, id responseObject) {
           success(responseObject);
-      }
-      failure:^(NSURLSessionDataTask *task, NSError *error) {
+        }
+        failure:^(NSURLSessionDataTask *task, NSError *error) {
           failure(error);
-      }];
+        }];
 }
+
+
+
+
 
 @end
