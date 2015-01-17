@@ -7,13 +7,12 @@
 //
 
 #import "RTMovie.h"
+#import "RTCast.h"
 
 NSString * const kIDKey = @"id";
 NSString * const kTitleKey = @"title";
 NSString * const kYearKey = @"year";
 NSString * const kReleaseDatesKey = @"release_dates";
-NSString * const kCastKey = @"abridged_cast";
-NSString * const kCastNameKey = @"name";
 NSString * const kCriticScoreKeyPath = @"ratings.critics_score";
 NSString * const kThumbnailKeyPath = @"posters.thumbnail";
 
@@ -28,7 +27,7 @@ NSString * const kThumbnailKeyPath = @"posters.thumbnail";
         movie.title = json[kTitleKey];
         movie.year = json[kYearKey];
         movie.releaseDates = [self releaseDateStringsFromReleaseDatesJSON:json[kReleaseDatesKey]];
-        movie.cast = [self castFromCastJSON:json[kCastKey]];
+        movie.cast = [RTCast castFromCastJSON:json];
         movie.criticScore = [[json valueForKeyPath:kCriticScoreKeyPath] integerValue];
         movie.thumbnailURL = [NSURL URLWithString:[json valueForKeyPath:kThumbnailKeyPath]];
     }
@@ -52,19 +51,6 @@ NSString * const kThumbnailKeyPath = @"posters.thumbnail";
     return releaseDateStrings;
 }
 
-+ (NSArray *)castFromCastJSON:(NSArray *)json {
-    //@TODO: Move this into cast objects.
-    NSMutableArray *cast = nil;
-    
-    if (json != nil) {
-        cast = [NSMutableArray arrayWithCapacity:[json count]];
-        for (NSDictionary *castMember in json) {
-            NSString *castName = castMember[kCastNameKey];
-            [cast addObject:castName];
-        }
-    }
-    return cast;
-}
 
 #pragma mark - NSCoding Conformance
 

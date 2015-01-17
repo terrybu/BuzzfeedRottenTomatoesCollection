@@ -31,6 +31,7 @@
 		AA68DA681A6A005A003EB1CA /* FavoritesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AA68DA671A6A005A003EB1CA /* FavoritesManager.m */; };
 		AAD550A21A6AFC0200313AC1 /* RTFavCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD550A11A6AFC0200313AC1 /* RTFavCollectionViewController.m */; };
 		AAD550A51A6AFE8000313AC1 /* RTFavCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD550A41A6AFE8000313AC1 /* RTFavCollectionViewCell.m */; };
+		AAD550A81A6B129600313AC1 /* RTCast.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD550A71A6B129600313AC1 /* RTCast.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,8 @@
 		AAD550A11A6AFC0200313AC1 /* RTFavCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTFavCollectionViewController.m; sourceTree = "<group>"; };
 		AAD550A31A6AFE8000313AC1 /* RTFavCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTFavCollectionViewCell.h; sourceTree = "<group>"; };
 		AAD550A41A6AFE8000313AC1 /* RTFavCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTFavCollectionViewCell.m; sourceTree = "<group>"; };
+		AAD550A61A6B129600313AC1 /* RTCast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCast.h; sourceTree = "<group>"; };
+		AAD550A71A6B129600313AC1 /* RTCast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTCast.m; sourceTree = "<group>"; };
 		B8AA1E1B4E3F7F0BAB474CFE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,6 +138,8 @@
 			children = (
 				4002451B1878FAEF00EE2892 /* RTMovie.h */,
 				4002451C1878FAEF00EE2892 /* RTMovie.m */,
+				AAD550A61A6B129600313AC1 /* RTCast.h */,
+				AAD550A71A6B129600313AC1 /* RTCast.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -381,6 +386,7 @@
 				40F332AF18777BFE00A0A70F /* RTAppDelegate.m in Sources */,
 				40F332B518777BFE00A0A70F /* RTSearchViewController.m in Sources */,
 				4002451D1878FAEF00EE2892 /* RTMovie.m in Sources */,
+				AAD550A81A6B129600313AC1 /* RTCast.m in Sources */,
 				40F332AB18777BFE00A0A70F /* main.m in Sources */,
 				400245191878F5A600EE2892 /* RTResponseSerializer.m in Sources */,
 				AA68DA681A6A005A003EB1CA /* FavoritesManager.m in Sources */,
