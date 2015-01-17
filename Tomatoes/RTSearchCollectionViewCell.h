@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RTCollectionViewCell : UICollectionViewCell
+@interface RTSearchCollectionViewCell : UICollectionViewCell
 
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;

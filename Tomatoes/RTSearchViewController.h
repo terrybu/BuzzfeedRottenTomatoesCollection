@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FavoritesManager.h"
 
 @interface RTSearchViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate>
+
+@property (nonatomic, strong) FavoritesManager *favManager;
 
 - (IBAction)refreshCollection:(id)sender;
 

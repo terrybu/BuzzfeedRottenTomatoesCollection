@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Matt Greenwell. All rights reserved.
 //
 
-#import "RTCollectionViewCell.h"
+#import "RTSearchCollectionViewCell.h"
 
-@implementation RTCollectionViewCell
+@implementation RTSearchCollectionViewCell
 
 
 

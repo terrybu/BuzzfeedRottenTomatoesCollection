@@ -50,7 +50,14 @@
 
 - (void)addTapped {
     // @TODO: Add to Favorites!
+    
+    [self.favManager.favorites addObject:self.movie];
+    NSLog(@"current favs count: %lu", (unsigned long)self.favManager.favorites.count);
+    NSLog(@"%@", self.favManager.favorites);
+    
 }
+
+
 
 #pragma mark - Helpers
 

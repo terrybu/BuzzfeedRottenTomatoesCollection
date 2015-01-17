@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Search Rotten Tomatoes-->
+        <!--Rotten Tomatoes App-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="RTSearchViewController" sceneMemberID="viewController">
@@ -34,7 +34,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="iuN-CI-ewK" customClass="RTCollectionViewCell">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="iuN-CI-ewK" customClass="RTSearchCollectionViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -61,10 +61,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Search Rotten Tomatoes" id="Zha-wp-Ej3">
+                    <navigationItem key="navigationItem" title="Rotten Tomatoes App" id="Zha-wp-Ej3">
                         <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="Spi-MH-b93">
                             <connections>
                                 <action selector="refreshCollection:" destination="vXZ-lx-hvc" id="Va0-Wa-DNN"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="star22" id="V4l-p7-Sxh">
+                            <connections>
+                                <segue destination="u7l-r5-AMo" kind="push" identifier="favSegue" id="kcc-Rf-nx9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -76,6 +81,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="300" y="53"/>
+        </scene>
+        <!--Favorites-->
+        <scene sceneID="dGr-PG-wWz">
+            <objects>
+                <collectionViewController id="u7l-r5-AMo" customClass="RTFavCollectionViewController" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="hS2-GX-hHJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uuO-Zj-dj4">
+                            <size key="itemSize" width="107" height="138"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FavCell" id="yKs-xr-6IQ" customClass="RTFavCollectionViewCell">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="107" height="138"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zhq-g3-Rmx">
+                                            <rect key="frame" x="0.0" y="0.0" width="107" height="138"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <outlet property="imageView" destination="zhq-g3-Rmx" id="7IZ-wv-oYV"/>
+                                    <segue destination="kOP-Ts-Zau" kind="push" identifier="favoriteDetailView" id="dtt-vk-szH"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="u7l-r5-AMo" id="Wcm-l0-Z5p"/>
+                            <outlet property="delegate" destination="u7l-r5-AMo" id="s0D-4R-j44"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Favorites" id="Hrr-Er-RN7"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8le-sW-Hez" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="889" y="-661"/>
         </scene>
         <!--Movie Detail View Controller-->
         <scene sceneID="Tp0-m1-OsJ">
@@ -149,7 +198,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QWZ-C9-Tya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="764" y="53"/>
+            <point key="canvasLocation" x="889" y="53"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KPf-GZ-N8b">
@@ -170,9 +219,15 @@
             <point key="canvasLocation" x="-232" y="53"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="star22" width="22" height="21"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="dtt-vk-szH"/>
+    </inferredMetricsTieBreakers>
 </document>

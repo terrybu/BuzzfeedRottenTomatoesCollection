@@ -4,7 +4,8 @@ In this project you will be accessing the Rotten Tomatoes API to allow a user to
 
 Some of the work is already done. For instance, the Networking and model _should_ be working, and most of the Detail Page has been completed. You will need to:
 
--Build the SearchVC (the initial VC for the app) Please see the enclosed "Search" image. 
+-Build the SearchVC (the initial VC for the app) 
+Please see the enclosed "Search" image. 
 
 -Add Favoriting in the Detail View.
 —-This needs to persist through app sessions.

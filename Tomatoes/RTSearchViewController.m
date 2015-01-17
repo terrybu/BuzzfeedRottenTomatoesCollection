@@ -8,10 +8,11 @@
 
 #import "RTSearchViewController.h"
 #import "RTRottenTomatoesClient.h"
-#import "RTCollectionViewCell.h"
+#import "RTSearchCollectionViewCell.h"
 #import "RTMovie.h"
 #import <UIImageView+AFNetworking.h>
 #import "RTMovieDetailViewController.h"
+#import "RTFavCollectionViewController.h"
 
 @interface RTSearchViewController ()
 
@@ -30,6 +31,14 @@
     
     return _client;
 }
+
+- (FavoritesManager *) favManager {
+    if (!_favManager) {
+         _favManager = [[FavoritesManager alloc]init];
+    }
+    return _favManager;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -61,12 +70,16 @@
 
 #pragma mark Collection view delegate methods
 
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.movies.count;
 }
 
-- (RTCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    RTCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+- (RTSearchCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    RTSearchCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
 
     RTMovie *movie = [self.movies objectAtIndex:indexPath.row];
     
@@ -76,21 +89,34 @@
     return cell;
 }
 
+
+
+
+
+#pragma mark Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"detailSegue"]) {
-        RTMovieDetailViewController *destViewController = (RTMovieDetailViewController *)segue.destinationViewController;
+        RTMovieDetailViewController *movieDetailVC = (RTMovieDetailViewController *)segue.destinationViewController;
         NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
-        destViewController.movie = [self.movies objectAtIndex:indexPath.row];
+        movieDetailVC.movie = [self.movies objectAtIndex:indexPath.row];
+        movieDetailVC.favManager = self.favManager;
+    }
+    else if ([segue.identifier isEqualToString:@"favSegue"]) {
+        RTFavCollectionViewController *favCVC = (RTFavCollectionViewController *)segue.destinationViewController;
+        favCVC.favManager = self.favManager;
+        favCVC.client = self.client;
     }
 }
 
 
-
-
+#pragma mark IBActions
 - (IBAction)refreshCollection:(id)sender {
     self.movies = [[NSArray alloc]init];
+    self.searchbar.text = @"";
     [self.collectionView reloadData];
 }
+
+
 
 
 @end
