@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Search View Controller-->
+        <!--Search Rotten Tomatoes-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="RTSearchViewController" sceneMemberID="viewController">
@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6fA-sg-d3v">
+                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search for movies" translatesAutoresizingMaskIntoConstraints="NO" id="6fA-sg-d3v">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -61,7 +61,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Zha-wp-Ej3"/>
+                    <navigationItem key="navigationItem" title="Search Rotten Tomatoes" id="Zha-wp-Ej3">
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="Spi-MH-b93">
+                            <connections>
+                                <action selector="refreshCollection:" destination="vXZ-lx-hvc" id="Va0-Wa-DNN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="scM-m0-xbk" id="6nS-5h-OOe"/>
                         <outlet property="searchbar" destination="6fA-sg-d3v" id="ulP-bV-pWZ"/>

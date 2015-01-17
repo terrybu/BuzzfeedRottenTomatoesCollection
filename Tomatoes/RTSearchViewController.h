@@ -10,9 +10,6 @@
 
 @interface RTSearchViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate>
 
-
-@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
-
-@property (strong, nonatomic) IBOutlet UISearchBar *searchbar;
+- (IBAction)refreshCollection:(id)sender;
 
 @end

@@ -16,6 +16,9 @@
 @interface RTSearchViewController ()
 
 @property (nonatomic, strong) NSArray *movies;
+@property (strong, nonatomic) RTRottenTomatoesClient *client;
+@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchbar;
 
 @end
 
@@ -24,18 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.movies = [[NSArray alloc]init];
-    RTRottenTomatoesClient *client = [RTRottenTomatoesClient sharedInstance];
-    
-    [client searchMoviesWithQuery:@"Fight Club" success:^(NSArray *movies) {
-        self.movies = movies;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.collectionView reloadData];
-        });
-    }
-    failure:^(NSError *error) {
-        NSLog(@"ERROR: %@", error);
-    }];
+    self.client = [RTRottenTomatoesClient sharedInstance];
     
 }
 
@@ -44,11 +36,23 @@
 }
 
 
+
 #pragma mark Search-Bar related methods
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    
+    [searchBar resignFirstResponder];
+    NSString *queryString = searchBar.text;
+    [self.client searchMoviesWithQuery:queryString success:^(NSArray *movies) {
+        self.movies = movies;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.collectionView reloadData];
+        });
+    }
+       failure:^(NSError *error) {
+           NSLog(@"ERROR: %@", error);
+       }];
 }
+
 
 
 #pragma mark Collection view delegate methods
@@ -76,6 +80,12 @@
 }
 
 
+
+
+- (IBAction)refreshCollection:(id)sender {
+    self.movies = [[NSArray alloc]init];
+    [self.collectionView reloadData];
+}
 
 
 @end
