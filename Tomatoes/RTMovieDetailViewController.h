@@ -15,5 +15,6 @@
 @property (nonatomic, strong) RTMovie *movie;
 @property (nonatomic, strong) FavoritesManager *favManager;
 
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end

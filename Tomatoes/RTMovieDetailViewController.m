@@ -24,6 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.scrollView.contentSize = CGSizeMake(320, 600);
+    
     if (self.movie != nil) {
         [self configureViewWithMovie:self.movie];
     }

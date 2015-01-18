@@ -178,51 +178,65 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title (YEAR)" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="165" translatesAutoresizingMaskIntoConstraints="NO" id="dbP-Ek-yEJ">
-                                <rect key="frame" x="7" y="7" width="165" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Released: &lt;Date&gt;" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="165" translatesAutoresizingMaskIntoConstraints="NO" id="qBK-hT-Dfe">
-                                <rect key="frame" x="7" y="51" width="165" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rotten Tomatoes Rating: " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="165" translatesAutoresizingMaskIntoConstraints="NO" id="N7X-br-geG">
-                                <rect key="frame" x="7" y="95" width="165" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cast:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="165" translatesAutoresizingMaskIntoConstraints="NO" id="YLh-wf-yZY">
-                                <rect key="frame" x="7" y="159" width="165" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9fk-Rj-i6o">
-                                <rect key="frame" x="172" y="7" width="132" height="124"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nJ1-9o-Ez6">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="550"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title (YEAR)" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="165" translatesAutoresizingMaskIntoConstraints="NO" id="dbP-Ek-yEJ">
+                                        <rect key="frame" x="20" y="20" width="165" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="165" id="HvV-7S-LZP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rotten Tomatoes Rating: " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="165" translatesAutoresizingMaskIntoConstraints="NO" id="N7X-br-geG">
+                                        <rect key="frame" x="20" y="108" width="165" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cast:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="165" translatesAutoresizingMaskIntoConstraints="NO" id="YLh-wf-yZY">
+                                        <rect key="frame" x="20" y="172" width="165" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Released: &lt;Date&gt;" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="165" translatesAutoresizingMaskIntoConstraints="NO" id="qBK-hT-Dfe">
+                                        <rect key="frame" x="20" y="64" width="165" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9fk-Rj-i6o">
+                                        <rect key="frame" x="195" y="20" width="117" height="141"/>
+                                    </imageView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="132" id="bm8-fk-e4C"/>
+                                    <constraint firstItem="dbP-Ek-yEJ" firstAttribute="top" secondItem="9fk-Rj-i6o" secondAttribute="top" id="6l4-tV-HJP"/>
+                                    <constraint firstItem="9fk-Rj-i6o" firstAttribute="trailing" secondItem="nJ1-9o-Ez6" secondAttribute="trailingMargin" id="A8h-bE-8FO"/>
+                                    <constraint firstItem="qBK-hT-Dfe" firstAttribute="leading" secondItem="dbP-Ek-yEJ" secondAttribute="leading" id="FHL-oQ-nSt"/>
+                                    <constraint firstItem="N7X-br-geG" firstAttribute="leading" secondItem="YLh-wf-yZY" secondAttribute="leading" id="KeJ-UX-bOi"/>
+                                    <constraint firstItem="9fk-Rj-i6o" firstAttribute="top" secondItem="dbP-Ek-yEJ" secondAttribute="bottom" constant="-21" id="KhJ-wx-jbZ"/>
+                                    <constraint firstItem="qBK-hT-Dfe" firstAttribute="top" secondItem="dbP-Ek-yEJ" secondAttribute="bottom" constant="23" id="MXf-00-RJt"/>
+                                    <constraint firstItem="qBK-hT-Dfe" firstAttribute="leading" secondItem="N7X-br-geG" secondAttribute="leading" id="Ofj-fN-9hd"/>
+                                    <constraint firstItem="9fk-Rj-i6o" firstAttribute="top" secondItem="nJ1-9o-Ez6" secondAttribute="top" constant="20" id="TSQ-i1-dZP"/>
+                                    <constraint firstItem="YLh-wf-yZY" firstAttribute="leading" secondItem="nJ1-9o-Ez6" secondAttribute="leading" constant="20" id="Yc2-Er-Mwa"/>
+                                    <constraint firstItem="YLh-wf-yZY" firstAttribute="top" secondItem="N7X-br-geG" secondAttribute="bottom" constant="23" id="Zun-Q5-1iP"/>
+                                    <constraint firstItem="N7X-br-geG" firstAttribute="top" secondItem="qBK-hT-Dfe" secondAttribute="bottom" constant="23" id="fMC-fL-dL1"/>
+                                    <constraint firstItem="qBK-hT-Dfe" firstAttribute="trailing" secondItem="dbP-Ek-yEJ" secondAttribute="trailing" id="ijX-7m-DA9"/>
+                                    <constraint firstAttribute="bottom" secondItem="YLh-wf-yZY" secondAttribute="bottom" constant="357" id="kDY-QL-zNS"/>
+                                    <constraint firstItem="9fk-Rj-i6o" firstAttribute="leading" secondItem="qBK-hT-Dfe" secondAttribute="trailing" constant="10" id="kwc-F3-sy1"/>
+                                    <constraint firstItem="YLh-wf-yZY" firstAttribute="top" secondItem="9fk-Rj-i6o" secondAttribute="bottom" constant="11" id="olc-I9-kJJ"/>
+                                    <constraint firstItem="YLh-wf-yZY" firstAttribute="trailing" secondItem="N7X-br-geG" secondAttribute="trailing" id="pR9-pw-MhR"/>
+                                    <constraint firstAttribute="trailing" secondItem="dbP-Ek-yEJ" secondAttribute="trailing" constant="135" id="qHP-6a-Lq5"/>
+                                    <constraint firstItem="qBK-hT-Dfe" firstAttribute="trailing" secondItem="N7X-br-geG" secondAttribute="trailing" id="wLW-vo-h6V"/>
                                 </constraints>
-                            </imageView>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="YLh-wf-yZY" firstAttribute="top" secondItem="N7X-br-geG" secondAttribute="bottom" constant="23" id="3hT-gB-OH8"/>
-                            <constraint firstItem="YSG-YT-r5a" firstAttribute="top" secondItem="9fk-Rj-i6o" secondAttribute="bottom" constant="373" id="8WG-Dh-eXn"/>
-                            <constraint firstItem="9fk-Rj-i6o" firstAttribute="trailing" secondItem="ezY-j6-DnY" secondAttribute="trailingMargin" id="8ui-PZ-xDB"/>
-                            <constraint firstItem="qBK-hT-Dfe" firstAttribute="top" secondItem="dbP-Ek-yEJ" secondAttribute="bottom" constant="23" id="AWo-3u-Fgb"/>
-                            <constraint firstItem="qBK-hT-Dfe" firstAttribute="leading" secondItem="N7X-br-geG" secondAttribute="leading" id="CFj-Sg-GGD"/>
-                            <constraint firstItem="YLh-wf-yZY" firstAttribute="trailing" secondItem="N7X-br-geG" secondAttribute="trailing" id="Jdq-1V-WIz"/>
-                            <constraint firstItem="dbP-Ek-yEJ" firstAttribute="leading" secondItem="qBK-hT-Dfe" secondAttribute="leading" id="KdO-5o-nIy"/>
-                            <constraint firstItem="dbP-Ek-yEJ" firstAttribute="top" secondItem="9fk-Rj-i6o" secondAttribute="top" id="P3N-0w-31e"/>
-                            <constraint firstItem="YLh-wf-yZY" firstAttribute="leading" secondItem="N7X-br-geG" secondAttribute="leading" id="R4b-Xo-wzL"/>
-                            <constraint firstItem="dbP-Ek-yEJ" firstAttribute="leading" secondItem="ezY-j6-DnY" secondAttribute="leadingMargin" constant="-9" id="TXc-Ho-IPD"/>
-                            <constraint firstItem="N7X-br-geG" firstAttribute="trailing" secondItem="qBK-hT-Dfe" secondAttribute="trailing" id="VZM-Ne-4Yz"/>
-                            <constraint firstItem="dbP-Ek-yEJ" firstAttribute="top" secondItem="5Kc-ie-Zv4" secondAttribute="bottom" constant="7" id="Vzv-fV-IRX"/>
-                            <constraint firstItem="9fk-Rj-i6o" firstAttribute="leading" secondItem="qBK-hT-Dfe" secondAttribute="trailing" id="WpO-Bq-YBa"/>
-                            <constraint firstItem="qBK-hT-Dfe" firstAttribute="trailing" secondItem="dbP-Ek-yEJ" secondAttribute="trailing" id="u6Y-aT-9Al"/>
-                            <constraint firstItem="N7X-br-geG" firstAttribute="top" secondItem="qBK-hT-Dfe" secondAttribute="bottom" constant="23" id="woi-3R-mnl"/>
+                            <constraint firstItem="nJ1-9o-Ez6" firstAttribute="leading" secondItem="ezY-j6-DnY" secondAttribute="leading" id="T4e-6p-Xmw"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="nJ1-9o-Ez6" secondAttribute="bottom" constant="-46" id="Vij-Sa-w1J"/>
+                            <constraint firstItem="nJ1-9o-Ez6" firstAttribute="top" secondItem="5Kc-ie-Zv4" secondAttribute="bottom" id="W96-WJ-ItR"/>
+                            <constraint firstAttribute="trailing" secondItem="nJ1-9o-Ez6" secondAttribute="trailing" id="iZi-Y1-VJo"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
@@ -233,6 +247,7 @@
                         <outlet property="posterImageView" destination="9fk-Rj-i6o" id="aHW-ao-Nkv"/>
                         <outlet property="ratingLabel" destination="N7X-br-geG" id="BYw-8d-aNu"/>
                         <outlet property="releaseDateLabel" destination="qBK-hT-Dfe" id="gFT-Bs-zMc"/>
+                        <outlet property="scrollView" destination="nJ1-9o-Ez6" id="ZSr-cS-mcs"/>
                         <outlet property="titleLabel" destination="dbP-Ek-yEJ" id="QFc-2B-wkm"/>
                     </connections>
                 </viewController>
