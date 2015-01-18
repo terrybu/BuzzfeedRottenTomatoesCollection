@@ -30,6 +30,8 @@
 		AA68DA651A69C36B003EB1CA /* RTSearchCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA68DA641A69C36B003EB1CA /* RTSearchCollectionViewCell.m */; };
 		AA68DA681A6A005A003EB1CA /* FavoritesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AA68DA671A6A005A003EB1CA /* FavoritesManager.m */; };
 		AAAB5CD61A6B20DF007B0F77 /* RTPageRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAB5CD51A6B20DF007B0F77 /* RTPageRootController.m */; };
+		AAAB5CDA1A6B466F007B0F77 /* GMDCircleLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAB5CD91A6B466F007B0F77 /* GMDCircleLoader.m */; };
+		AAAB5CDC1A6B468A007B0F77 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAB5CDB1A6B468A007B0F77 /* QuartzCore.framework */; };
 		AAD550A21A6AFC0200313AC1 /* RTFavCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD550A11A6AFC0200313AC1 /* RTFavCollectionViewController.m */; };
 		AAD550A51A6AFE8000313AC1 /* RTFavCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD550A41A6AFE8000313AC1 /* RTFavCollectionViewCell.m */; };
 		AAD550A81A6B129600313AC1 /* RTCast.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD550A71A6B129600313AC1 /* RTCast.m */; };
@@ -69,7 +71,7 @@
 		40F332B118777BFE00A0A70F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		40F332B318777BFE00A0A70F /* RTSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RTSearchViewController.h; sourceTree = "<group>"; };
 		40F332B418777BFE00A0A70F /* RTSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RTSearchViewController.m; sourceTree = "<group>"; };
-		40F332B618777BFE00A0A70F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		40F332B618777BFE00A0A70F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Tomatoes/Images.xcassets; sourceTree = "<group>"; };
 		40F332BC18777BFE00A0A70F /* TomatoesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TomatoesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		40F332BD18777BFE00A0A70F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		40F332C518777BFF00A0A70F /* TomatoesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TomatoesTests-Info.plist"; sourceTree = "<group>"; };
@@ -82,6 +84,9 @@
 		AA68DA671A6A005A003EB1CA /* FavoritesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesManager.m; sourceTree = "<group>"; };
 		AAAB5CD41A6B20DF007B0F77 /* RTPageRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTPageRootController.h; sourceTree = "<group>"; };
 		AAAB5CD51A6B20DF007B0F77 /* RTPageRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTPageRootController.m; sourceTree = "<group>"; };
+		AAAB5CD81A6B466F007B0F77 /* GMDCircleLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMDCircleLoader.h; sourceTree = "<group>"; };
+		AAAB5CD91A6B466F007B0F77 /* GMDCircleLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMDCircleLoader.m; sourceTree = "<group>"; };
+		AAAB5CDB1A6B468A007B0F77 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AAD550A01A6AFC0200313AC1 /* RTFavCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTFavCollectionViewController.h; sourceTree = "<group>"; };
 		AAD550A11A6AFC0200313AC1 /* RTFavCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTFavCollectionViewController.m; sourceTree = "<group>"; };
 		AAD550A31A6AFE8000313AC1 /* RTFavCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTFavCollectionViewCell.h; sourceTree = "<group>"; };
@@ -96,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAAB5CDC1A6B468A007B0F77 /* QuartzCore.framework in Frameworks */,
 				40F332A118777BFE00A0A70F /* CoreGraphics.framework in Frameworks */,
 				40F332A318777BFE00A0A70F /* UIKit.framework in Frameworks */,
 				40F3329F18777BFE00A0A70F /* Foundation.framework in Frameworks */,
@@ -179,6 +185,8 @@
 			isa = PBXGroup;
 			children = (
 				40F332A418777BFE00A0A70F /* Tomatoes */,
+				40F332B618777BFE00A0A70F /* Images.xcassets */,
+				40F332A518777BFE00A0A70F /* Supporting Files */,
 				40F332C318777BFF00A0A70F /* TomatoesTests */,
 				40F3329D18777BFE00A0A70F /* Frameworks */,
 				40F3329C18777BFE00A0A70F /* Products */,
@@ -198,6 +206,7 @@
 		40F3329D18777BFE00A0A70F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AAAB5CDB1A6B468A007B0F77 /* QuartzCore.framework */,
 				40F3329E18777BFE00A0A70F /* Foundation.framework */,
 				40F332A018777BFE00A0A70F /* CoreGraphics.framework */,
 				40F332A218777BFE00A0A70F /* UIKit.framework */,
@@ -213,12 +222,11 @@
 				40F332AD18777BFE00A0A70F /* RTAppDelegate.h */,
 				40F332AE18777BFE00A0A70F /* RTAppDelegate.m */,
 				40F332B018777BFE00A0A70F /* Main.storyboard */,
-				4002451E1879C90000EE2892 /* Cells */,
 				409E6CBD18777DCE00B8AEE3 /* View Controllers */,
+				4002451E1879C90000EE2892 /* Cells */,
 				4002451318787E1B00EE2892 /* Communication */,
 				4002451A1878F61000EE2892 /* Model */,
-				40F332A518777BFE00A0A70F /* Supporting Files */,
-				40F332B618777BFE00A0A70F /* Images.xcassets */,
+				AAAB5CD71A6B465F007B0F77 /* Vendor */,
 			);
 			path = Tomatoes;
 			sourceTree = "<group>";
@@ -233,6 +241,7 @@
 				40F332AC18777BFE00A0A70F /* Tomatoes-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			path = Tomatoes;
 			sourceTree = "<group>";
 		};
 		40F332C318777BFF00A0A70F /* TomatoesTests */ = {
@@ -251,6 +260,15 @@
 				40F332C618777BFF00A0A70F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AAAB5CD71A6B465F007B0F77 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				AAAB5CD81A6B466F007B0F77 /* GMDCircleLoader.h */,
+				AAAB5CD91A6B466F007B0F77 /* GMDCircleLoader.m */,
+			);
+			name = Vendor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -392,6 +410,7 @@
 				40F332B518777BFE00A0A70F /* RTSearchViewController.m in Sources */,
 				4002451D1878FAEF00EE2892 /* RTMovie.m in Sources */,
 				AAD550A81A6B129600313AC1 /* RTCast.m in Sources */,
+				AAAB5CDA1A6B466F007B0F77 /* GMDCircleLoader.m in Sources */,
 				40F332AB18777BFE00A0A70F /* main.m in Sources */,
 				400245191878F5A600EE2892 /* RTResponseSerializer.m in Sources */,
 				AA68DA681A6A005A003EB1CA /* FavoritesManager.m in Sources */,

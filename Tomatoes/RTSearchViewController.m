@@ -13,6 +13,7 @@
 #import <UIImageView+AFNetworking.h>
 #import "RTMovieDetailViewController.h"
 #import "RTFavCollectionViewController.h"
+#import "GMDCircleLoader.h"
 
 @interface RTSearchViewController ()
 
@@ -47,11 +48,18 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
+    
+    self.movies = [[NSArray alloc]init];
+    [self.collectionView reloadData];
+    
+    [GMDCircleLoader setOnView:self.view withTitle:@"Loading.." animated:YES];
+    
     NSString *queryString = searchBar.text;
     [self.client searchMoviesWithQuery:queryString success:^(NSArray *movies) {
         self.movies = movies;
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.collectionView reloadData];
+            [GMDCircleLoader hideFromView:self.view animated:YES];
         });
     }
        failure:^(NSError *error) {

@@ -2,7 +2,7 @@
 //  RTPageRootController.m
 //  Tomatoes
 //
-//  Created by Aditya Narayan on 1/17/15.
+//  Created by Terry Bu on 1/17/15.
 //  Copyright (c) 2015 Matt Greenwell. All rights reserved.
 //
 
@@ -32,39 +32,36 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    //Initial Setup
     UINavigationController *first = [self.storyboard instantiateViewControllerWithIdentifier:@"firstNav"];
     UINavigationController *second = [self.storyboard instantiateViewControllerWithIdentifier:@"secondNav"];
-
     RTSearchViewController *search = (RTSearchViewController *) first.topViewController;
     RTFavCollectionViewController *fav = (RTFavCollectionViewController *) second.topViewController;
     search.favManager = fav.favManager = self.favManager;
     search.rootVC = self;
-
     self.firstVC = first;
     self.secondVC = second;
     
-    // Create page view controller
+    //Page View Controller Setup
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
     self.pageViewController.dataSource = self;
     self.pageViewController.delegate = self;
-    
     self.viewControllers = @[self.firstVC];
     [self.pageViewController setViewControllers:self.viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-    
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
     
-    [self addUniqueObserver:self selector:@selector(favStarWasPressed) name:@"favStarPressed" object:nil];
-    [self addUniqueObserver:self selector:@selector(searchBarButtonWasPressed) name:@"searchBarButtonPressed" object:nil];
-    
-    //Specific to dotted pageControl below navigation bar
+    //For Page Control
     self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-15, self.view.frame.size.height-30, 30, 30)];
     self.pageControl.backgroundColor = [UIColor clearColor];
     self.pageControl.pageIndicatorTintColor = [UIColor grayColor];
     self.pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
     [self.pageControl setNumberOfPages:2];
     [self.view addSubview:self.pageControl];
-
+    
+    //Registering for notifications
+    [self addUniqueObserver:self selector:@selector(favStarWasPressed) name:@"favStarPressed" object:nil];
+    [self addUniqueObserver:self selector:@selector(searchBarButtonWasPressed) name:@"searchBarButtonPressed" object:nil];
 }
 
 
@@ -78,7 +75,6 @@
 
 #pragma mark - Notifications Related
 - (void)addUniqueObserver:(id)observer selector:(SEL)selector name:(NSString *)name object:(id)object {
-    
     [[NSNotificationCenter defaultCenter] removeObserver:observer name:name object:object];
     [[NSNotificationCenter defaultCenter] addObserver:observer selector:selector name:name object:object];
 }
