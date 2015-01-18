@@ -165,10 +165,10 @@
 				AAAB5CD51A6B20DF007B0F77 /* RTPageRootController.m */,
 				40F332B318777BFE00A0A70F /* RTSearchViewController.h */,
 				40F332B418777BFE00A0A70F /* RTSearchViewController.m */,
-				40024525187A044E00EE2892 /* RTMovieDetailViewController.h */,
-				40024526187A044E00EE2892 /* RTMovieDetailViewController.m */,
 				AAD550A01A6AFC0200313AC1 /* RTFavCollectionViewController.h */,
 				AAD550A11A6AFC0200313AC1 /* RTFavCollectionViewController.m */,
+				40024525187A044E00EE2892 /* RTMovieDetailViewController.h */,
+				40024526187A044E00EE2892 /* RTMovieDetailViewController.m */,
 				AA68DA661A6A005A003EB1CA /* FavoritesManager.h */,
 				AA68DA671A6A005A003EB1CA /* FavoritesManager.m */,
 			);

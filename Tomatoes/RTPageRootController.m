@@ -54,14 +54,18 @@
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
     
-    [self addUniqueObserver:self selector:@selector(favStarPressed) name:@"favStarPressed" object:nil];
-
+    [self addUniqueObserver:self selector:@selector(favStarWasPressed) name:@"favStarPressed" object:nil];
+    [self addUniqueObserver:self selector:@selector(searchBarButtonWasPressed) name:@"searchBarButtonPressed" object:nil];
 
 }
 
-- (void) favStarPressed {
+- (void) favStarWasPressed {
     [self.pageViewController setViewControllers:@[self.secondVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
 }
+- (void) searchBarButtonWasPressed {
+    [self.pageViewController setViewControllers:@[self.firstVC] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

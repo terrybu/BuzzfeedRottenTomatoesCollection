@@ -101,7 +101,7 @@
 }
 
 - (IBAction)favStarPressed:(id)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"favStarPressed" object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"favStarPressed" object:nil];
 }
 
 

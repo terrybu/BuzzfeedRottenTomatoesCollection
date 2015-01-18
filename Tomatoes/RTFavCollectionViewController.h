@@ -13,4 +13,6 @@
 
 @property (nonatomic, strong) FavoritesManager *favManager;
 
+- (IBAction)searchButtonPressed:(id)sender;
+
 @end
