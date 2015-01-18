@@ -42,11 +42,14 @@
     self.secondVC = second;
     
     //Page View Controller Setup
-    self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
+    self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
+    self.pageViewController.backgroundColor = [UIColor blackColor];
+
     self.pageViewController.dataSource = self;
     self.pageViewController.delegate = self;
     self.viewControllers = @[self.firstVC];
     [self.pageViewController setViewControllers:self.viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
     
@@ -114,6 +117,17 @@
     else if ([topVC isKindOfClass:[RTSearchViewController class]])
         [self.pageControl setCurrentPage:0];
     
+}
+
+#pragma mark - Page Control delegate methods
+- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
+{
+   return 2;
+}
+
+(NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
+{
+    return 0;
 }
 
 
