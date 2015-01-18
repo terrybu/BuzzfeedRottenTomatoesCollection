@@ -23,7 +23,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IQ7-oI-soe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-612" y="381"/>
+            <point key="canvasLocation" x="-856" y="333"/>
         </scene>
         <!--Rotten Tomatoes App-->
         <scene sceneID="ufC-wZ-h7g">
@@ -231,7 +231,7 @@
                 <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="gLg-T6-pLw" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MKc-Xe-r9r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-966" y="-95"/>
+            <point key="canvasLocation" x="-856" y="-287"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8dr-O6-Cch">
