@@ -32,13 +32,6 @@
     return _client;
 }
 
-- (FavoritesManager *) favManager {
-    if (!_favManager) {
-         _favManager = [[FavoritesManager alloc]init];
-    }
-    return _favManager;
-}
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -97,10 +90,6 @@
         movieDetailVC.movie = [self.movies objectAtIndex:indexPath.row];
         movieDetailVC.favManager = self.favManager;
     }
-    else if ([segue.identifier isEqualToString:@"favSegue"]) {
-        RTFavCollectionViewController *favCVC = (RTFavCollectionViewController *)segue.destinationViewController;
-        favCVC.favManager = self.favManager;
-    }
 }
 
 
@@ -109,6 +98,10 @@
     self.movies = [[NSArray alloc]init];
     self.searchbar.text = @"";
     [self.collectionView reloadData];
+}
+
+- (IBAction)favStarPressed:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"favStarPressed" object:self];
 }
 
 

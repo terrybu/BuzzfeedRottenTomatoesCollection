@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FavoritesManager.h"
 
 @interface RTPageRootController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
-@property (strong, nonatomic) UINavigationController *firstVC;
-@property (strong, nonatomic) UINavigationController *secondVC;
 
-@property (strong, nonatomic) UIPageViewController *pageViewController;
+@property (nonatomic, strong) FavoritesManager *favManager;
+
 
 @end

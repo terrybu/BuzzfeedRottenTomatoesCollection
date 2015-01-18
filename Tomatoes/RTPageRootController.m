@@ -7,14 +7,26 @@
 //
 
 #import "RTPageRootController.h"
+#import "RTSearchViewController.h"
+#import "RTFavCollectionViewController.h"
 
-@interface RTPageRootController () {
-    NSArray *viewControllers;
-}
+@interface RTPageRootController ()
+
+@property (nonatomic, strong) NSArray *viewControllers;
+@property (nonatomic, strong) UIPageViewController *pageViewController;
+@property (strong, nonatomic) UINavigationController *firstVC;
+@property (strong, nonatomic) UINavigationController *secondVC;
 
 @end
 
 @implementation RTPageRootController
+
+- (FavoritesManager *) favManager {
+    if (!_favManager) {
+        _favManager = [[FavoritesManager alloc]init];
+    }
+    return _favManager;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,8 +34,12 @@
     
     UINavigationController *first = [self.storyboard instantiateViewControllerWithIdentifier:@"firstNav"];
     UINavigationController *second = [self.storyboard instantiateViewControllerWithIdentifier:@"secondNav"];
-    first.navigationBar.translucent = YES;
-    
+
+    RTSearchViewController *search = (RTSearchViewController *) first.topViewController;
+    RTFavCollectionViewController *fav = (RTFavCollectionViewController *) second.topViewController;
+    search.favManager = fav.favManager = self.favManager;
+    search.rootVC = self;
+
     self.firstVC = first;
     self.secondVC = second;
     
@@ -32,19 +48,31 @@
     self.pageViewController.dataSource = self;
     self.pageViewController.delegate = self;
     
-    viewControllers = @[self.firstVC];
-    [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    self.viewControllers = @[self.firstVC];
+    [self.pageViewController setViewControllers:self.viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
-    // Change the size of page view controller
-    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
+    
+    [self addUniqueObserver:self selector:@selector(favStarPressed) name:@"favStarPressed" object:nil];
 
+
+}
+
+- (void) favStarPressed {
+    [self.pageViewController setViewControllers:@[self.secondVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)addUniqueObserver:(id)observer selector:(SEL)selector name:(NSString *)name object:(id)object {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:observer name:name object:object];
+    [[NSNotificationCenter defaultCenter] addObserver:observer selector:selector name:name object:object];
+    
 }
 
 #pragma mark - Page View Controller Data Source

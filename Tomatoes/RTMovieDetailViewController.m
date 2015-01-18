@@ -28,13 +28,24 @@
         [self configureViewWithMovie:self.movie];
     }
     
-    if (![self.navigationController.viewControllers[1] isKindOfClass:[RTFavCollectionViewController class]]) {
+    if (![[self backViewController] isKindOfClass:[RTFavCollectionViewController class]]) {
         UIBarButtonItem *favoriteSaveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
                                                                                             target:self
                                                                                             action:@selector(addTapped)];
         self.navigationItem.rightBarButtonItem = favoriteSaveButton;
     }
 
+}
+
+- (UIViewController *)backViewController
+{
+    NSInteger myIndex = [self.navigationController.viewControllers indexOfObject:self];
+    
+    if ( myIndex != 0 && myIndex != NSNotFound ) {
+        return [self.navigationController.viewControllers objectAtIndex:myIndex-1];
+    } else {
+        return nil;
+    }
 }
 
 - (void)setMovie:(RTMovie *)movie {
