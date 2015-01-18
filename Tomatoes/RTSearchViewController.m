@@ -36,6 +36,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        NSLog(@"Reachability: %@", AFStringFromNetworkReachabilityStatus(status));
+        switch (status) {
+            case AFNetworkReachabilityStatusReachableViaWWAN:
+                NSLog(@"WWAN");
+                break;
+            case AFNetworkReachabilityStatusReachableViaWiFi:
+                NSLog(@"WIFI");
+                break;
+            case AFNetworkReachabilityStatusNotReachable: {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No internet connection"
+                                                                message:@"Rotten Tomatoes API search will not work without internet connection!"
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                [alert show];
+                break;
+            }
+            default:
+                break;
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
