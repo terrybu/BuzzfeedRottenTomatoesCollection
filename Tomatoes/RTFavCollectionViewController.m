@@ -29,6 +29,7 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:NO];
     [self.collectionView reloadData];
+    [self.rootVC.pageControl setHidden:NO];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,6 +46,7 @@
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
     movieDetailVC.movie = [self.favManager.favorites objectAtIndex:indexPath.row];
     movieDetailVC.favManager = self.favManager;
+    [self.rootVC.pageControl setHidden:YES];
 }
 
 

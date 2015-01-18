@@ -62,6 +62,12 @@
     }];
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:NO];
+    [self.rootVC.pageControl setHidden:NO];
+
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -79,15 +85,19 @@
     [GMDCircleLoader setOnView:self.view withTitle:@"Loading.." animated:YES];
     
     NSString *queryString = searchBar.text;
-    [self.client searchMoviesWithQuery:queryString success:^(NSArray *movies) {
-        self.movies = movies;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.collectionView reloadData];
-            [GMDCircleLoader hideFromView:self.view animated:YES];
-        });
-    }
+    [self.client searchMoviesWithQuery:queryString
+        success:^(NSArray *movies) {
+            self.movies = movies;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.collectionView reloadData];
+                [GMDCircleLoader hideFromView:self.view animated:YES];
+            });
+        }
        failure:^(NSError *error) {
            NSLog(@"ERROR: %@", error);
+           dispatch_async(dispatch_get_main_queue(), ^{
+               [GMDCircleLoader hideFromView:self.view animated:YES];
+           });
        }];
 }
 
@@ -111,9 +121,6 @@
 }
 
 
-
-
-
 #pragma mark Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"detailSegue"]) {
@@ -122,6 +129,7 @@
         movieDetailVC.movie = [self.movies objectAtIndex:indexPath.row];
         movieDetailVC.favManager = self.favManager;
     }
+    [self.rootVC.pageControl setHidden:YES];
 }
 
 

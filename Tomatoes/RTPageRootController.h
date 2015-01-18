@@ -13,6 +13,7 @@
 
 
 @property (nonatomic, strong) FavoritesManager *favManager;
+@property (nonatomic, strong) UIPageControl *pageControl;
 
 
 @end

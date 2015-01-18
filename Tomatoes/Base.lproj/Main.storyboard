@@ -37,14 +37,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search for movies" translatesAutoresizingMaskIntoConstraints="NO" id="6fA-sg-d3v">
+                            <searchBar contentMode="redraw" placeholder="Search for movies" translatesAutoresizingMaskIntoConstraints="NO" id="6fA-sg-d3v">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="fEn-7Y-1hV"/>
                                 </connections>
                             </searchBar>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="scM-m0-xbk">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="scM-m0-xbk">
                                 <rect key="frame" x="0.0" y="44" width="320" height="460"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="rgO-KV-a5l">
                                     <size key="itemSize" width="106.5" height="135"/>
@@ -60,12 +60,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="107" height="135"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ut4-gV-HY8">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ut4-gV-HY8">
                                                     <rect key="frame" x="0.0" y="0.0" width="107" height="135"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="Ut4-gV-HY8" secondAttribute="bottom" id="8kF-fj-AMI"/>
+                                            <constraint firstItem="Ut4-gV-HY8" firstAttribute="leading" secondItem="iuN-CI-ewK" secondAttribute="leading" id="BEt-lE-HeN"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ut4-gV-HY8" secondAttribute="trailing" id="mnX-C7-h16"/>
+                                            <constraint firstItem="Ut4-gV-HY8" firstAttribute="top" secondItem="iuN-CI-ewK" secondAttribute="top" id="rgA-8J-6sB"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="Ut4-gV-HY8" id="9CV-RU-hAa"/>
                                             <segue destination="kOP-Ts-Zau" kind="push" identifier="detailSegue" id="ME3-id-GHT"/>
@@ -79,6 +85,15 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="scM-m0-xbk" secondAttribute="trailing" id="1Ja-kx-FQO"/>
+                            <constraint firstItem="6fA-sg-d3v" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Jus-5z-HNa"/>
+                            <constraint firstItem="6fA-sg-d3v" firstAttribute="top" secondItem="s6L-Jf-QmF" secondAttribute="bottom" id="MlF-6s-oGY"/>
+                            <constraint firstItem="scM-m0-xbk" firstAttribute="top" secondItem="6fA-sg-d3v" secondAttribute="bottom" id="RGj-kK-xfc"/>
+                            <constraint firstItem="scM-m0-xbk" firstAttribute="bottom" secondItem="xbI-Ey-eEr" secondAttribute="top" id="aK2-ZL-s9C"/>
+                            <constraint firstItem="6fA-sg-d3v" firstAttribute="trailing" secondItem="scM-m0-xbk" secondAttribute="trailing" id="ekt-ub-7Xi"/>
+                            <constraint firstItem="6fA-sg-d3v" firstAttribute="leading" secondItem="scM-m0-xbk" secondAttribute="leading" id="glD-ai-pUd"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Rotten Tomatoes App" id="Zha-wp-Ej3">
                         <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="Spi-MH-b93">
@@ -279,6 +294,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="dtt-vk-szH"/>
+        <segue reference="ME3-id-GHT"/>
     </inferredMetricsTieBreakers>
 </document>

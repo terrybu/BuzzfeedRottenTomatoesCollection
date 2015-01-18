@@ -16,7 +16,6 @@
 @property (nonatomic, strong) UIPageViewController *pageViewController;
 @property (nonatomic, strong) UINavigationController *firstVC;
 @property (nonatomic, strong) UINavigationController *secondVC;
-@property (nonatomic, strong) UIPageControl *pageControl;
 @end
 
 @implementation RTPageRootController
@@ -38,7 +37,7 @@
     RTSearchViewController *search = (RTSearchViewController *) first.topViewController;
     RTFavCollectionViewController *fav = (RTFavCollectionViewController *) second.topViewController;
     search.favManager = fav.favManager = self.favManager;
-    search.rootVC = self;
+    search.rootVC = fav.rootVC = self;
     self.firstVC = first;
     self.secondVC = second;
     
