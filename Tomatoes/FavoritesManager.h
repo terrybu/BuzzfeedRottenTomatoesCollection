@@ -14,5 +14,6 @@
 @property (nonatomic, strong) NSMutableOrderedSet *favorites;
 
 - (void) saveToFavorites: (RTMovie *) movie;
+- (void) deleteFromFavorites: (RTMovie *) movie;
 
 @end

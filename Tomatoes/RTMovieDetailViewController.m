@@ -11,11 +11,13 @@
 #import "RTFavCollectionViewController.h"
 
 @interface RTMovieDetailViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *releaseDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *castLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *posterImageView;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -30,17 +32,32 @@
         [self configureViewWithMovie:self.movie];
     }
     
-    //this is to avoid having the "Save" bar button appear when we are actually in the Favorites section already
-    if (![[self backViewController] isKindOfClass:[RTFavCollectionViewController class]]) {
+    if (![[self findPreviousViewController] isKindOfClass:[RTFavCollectionViewController class]]) {
         UIBarButtonItem *favoriteSaveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
                                                                                             target:self
-                                                                                            action:@selector(addTapped)];
+                                                                                            action:@selector(saveButtonPressed)];
         self.navigationItem.rightBarButtonItem = favoriteSaveButton;
     }
-
+    else {
+        UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithTitle:@"Delete" style:UIBarButtonItemStyleDone target:self action:@selector(deleteButtonPressed)];
+        self.navigationItem.rightBarButtonItem = deleteButton;
+    }
 }
 
-- (UIViewController *)backViewController
+- (void)saveButtonPressed {
+    // @TODO: Add to Favorites!
+    [self.favManager saveToFavorites:self.movie];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void) deleteButtonPressed {
+    // Just for extra delete functionality
+    [self.favManager deleteFromFavorites:self.movie];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+- (UIViewController *)findPreviousViewController
 {
     NSInteger myIndex = [self.navigationController.viewControllers indexOfObject:self];
     
@@ -64,11 +81,6 @@
     [self.posterImageView setImageWithURL:movie.thumbnailURL];
 }
 
-- (void)addTapped {
-    // @TODO: Add to Favorites!
-    [self.favManager saveToFavorites:self.movie];
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 
 

@@ -32,8 +32,16 @@
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.favorites];
     [defaults setObject:data forKey:@"favorites"];
     [defaults synchronize];
-
 }
+
+- (void) deleteFromFavorites: (RTMovie *) movie {
+    [self.favorites removeObject:movie];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.favorites];
+    [defaults setObject:data forKey:@"favorites"];
+    [defaults synchronize];
+}
+
 
 
 
