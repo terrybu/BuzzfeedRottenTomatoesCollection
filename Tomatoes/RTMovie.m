@@ -27,7 +27,7 @@ NSString * const kThumbnailKeyPath = @"posters.thumbnail";
         movie.title = json[kTitleKey];
         movie.year = json[kYearKey];
         movie.releaseDates = [self releaseDateStringsFromReleaseDatesJSON:json[kReleaseDatesKey]];
-        movie.cast = [RTCast castFromCastJSON:json];
+        movie.cast = [RTCast returnArrayOfCastObjectsFromCastJSON:json];
         movie.criticScore = [[json valueForKeyPath:kCriticScoreKeyPath] integerValue];
         movie.thumbnailURL = [NSURL URLWithString:[json valueForKeyPath:kThumbnailKeyPath]];
     }

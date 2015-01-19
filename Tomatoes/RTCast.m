@@ -13,7 +13,7 @@ NSString * const kCastNameKey = @"name";
 
 @implementation RTCast
 
-+ (NSArray *)castFromCastJSON:(NSDictionary *)json {
++ (NSArray *)returnArrayOfCastObjectsFromCastJSON:(NSDictionary *)json {
     NSArray *castMembersArrayJSON = json[kCastKey];
     
     RTCast *cast = [[RTCast alloc]init];

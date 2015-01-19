@@ -33,21 +33,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //this variable is used to keep page control indicator consistent when using bar buttons to navigate instead of scrolling side to side
-    pageIndicatorFlag = 0;
+    [self initializePageViewControllerSetUp];
     
-    //Initial Setup
+    RTSearchViewController *search = (RTSearchViewController *) self.firstVC.topViewController;
+    RTFavCollectionViewController *fav = (RTFavCollectionViewController *) self.secondVC.topViewController;
+    search.favManager = fav.favManager = self.favManager;
+    
+    //Registering for notifications
+    [self addUniqueObserver:self selector:@selector(favStarWasPressed) name:@"favStarPressed" object:nil];
+    [self addUniqueObserver:self selector:@selector(searchBarButtonWasPressed) name:@"searchButtonPressed" object:nil];
+}
+
+
+- (void) initializePageViewControllerSetUp {
     UINavigationController *first = [self.storyboard instantiateViewControllerWithIdentifier:@"firstNav"];
     UINavigationController *second = [self.storyboard instantiateViewControllerWithIdentifier:@"secondNav"];
-    RTSearchViewController *search = (RTSearchViewController *) first.topViewController;
-    search.pageIndex = 0;
-    RTFavCollectionViewController *fav = (RTFavCollectionViewController *) second.topViewController;
-    fav.pageIndex = 1;
-    search.favManager = fav.favManager = self.favManager;
+
     self.firstVC = first;
     self.secondVC = second;
     
-    //Page View Controller Setup
     self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     self.pageViewController.dataSource = self;
     self.pageViewController.delegate = self;
@@ -57,15 +61,13 @@
     
     [self.pageViewController willMoveToParentViewController:self];
     [self addChildViewController:self.pageViewController];
-    
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
-    
-    //Registering for notifications
-    [self addUniqueObserver:self selector:@selector(favStarWasPressed) name:@"favStarPressed" object:nil];
-    [self addUniqueObserver:self selector:@selector(searchBarButtonWasPressed) name:@"searchButtonPressed" object:nil];
 
+    //this variable is used to keep page control indicator consistent when using bar buttons to navigate instead of scrolling side to side
+    pageIndicatorFlag = 0;
 }
+
 
 #pragma mark - Notifications Related
 - (void)addUniqueObserver:(id)observer selector:(SEL)selector name:(NSString *)name object:(id)object {
@@ -83,33 +85,9 @@
 }
 
 
-//this particular viewWillLayoutSubviews is needed to remove small bug using pageviewcontrollers where there's a weird scrollview inset that doesn't go away when orientation changes
-- (void)viewWillLayoutSubviews
-{
-    if (self.pageViewController.viewControllers[0] == self.firstVC) {
-        [self.pageViewController setViewControllers:@[self.firstVC]
-                       direction:UIPageViewControllerNavigationDirectionForward
-                        animated:NO
-                      completion:nil];
-    }
-    else if (self.pageViewController.viewControllers[0] == self.secondVC) {
-        [self.pageViewController setViewControllers:@[self.secondVC]
-                                          direction:UIPageViewControllerNavigationDirectionForward
-                                           animated:NO
-                                         completion:nil];
-    }
-}
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-
-
-#pragma mark - Page View Controller Data Source
+#pragma mark - PageViewController Related
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
     if (self.pageViewController.viewControllers[0] == self.secondVC) {
@@ -142,6 +120,26 @@
     return 0;
 }
 
+//this particular viewWillLayoutSubviews is needed to remove small bug using pageviewcontrollers where there's a weird scrollview inset that doesn't go away when orientation changes
+- (void)viewWillLayoutSubviews
+{
+    void (^pvcSetViewControllers)(UINavigationController *vc) = ^(UINavigationController *vc) {
+        [self.pageViewController setViewControllers:@[vc]
+                                          direction:UIPageViewControllerNavigationDirectionForward
+                                           animated:NO
+                                         completion:nil];
+    };
+    
+    if (self.pageViewController.viewControllers[0] == self.firstVC)
+        pvcSetViewControllers(self.firstVC);
+    else if (self.pageViewController.viewControllers[0] == self.secondVC)
+        pvcSetViewControllers(self.secondVC);
+}
 
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 @end

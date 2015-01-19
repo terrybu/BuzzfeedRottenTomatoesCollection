@@ -10,6 +10,6 @@
 
 @property (nonatomic, strong) NSMutableArray *names;
 
-+ (NSArray *)castFromCastJSON:(NSDictionary *)json;
++ (NSArray *)returnArrayOfCastObjectsFromCastJSON:(NSDictionary *)json;
 
 @end
