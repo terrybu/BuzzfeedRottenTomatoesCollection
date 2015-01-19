@@ -137,7 +137,7 @@
 }
 
 - (IBAction)favStarPressed:(id)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"favStarPressed" object:nil];
+    [self.rootVC.pageViewController setViewControllers:@[self.rootVC.secondVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
 }
 
 

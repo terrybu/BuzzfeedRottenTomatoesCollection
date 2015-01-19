@@ -13,9 +13,7 @@
 @interface RTRootContainerController ()
 
 @property (nonatomic, strong) NSArray *viewControllers;
-@property (nonatomic, strong) UIPageViewController *pageViewController;
-@property (nonatomic, strong) UINavigationController *firstVC;
-@property (nonatomic, strong) UINavigationController *secondVC;
+
 @end
 
 @implementation RTRootContainerController
@@ -29,8 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
+
     //Initial Setup
     UINavigationController *first = [self.storyboard instantiateViewControllerWithIdentifier:@"firstNav"];
     UINavigationController *second = [self.storyboard instantiateViewControllerWithIdentifier:@"secondNav"];
@@ -43,7 +40,6 @@
     
     //Page View Controller Setup
     self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
-
     self.pageViewController.dataSource = self;
     self.pageViewController.delegate = self;
     self.viewControllers = @[self.firstVC];
@@ -51,14 +47,25 @@
     self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
-    
-    
-    //Registering for notifications
-    [self addUniqueObserver:self selector:@selector(favStarWasPressed) name:@"favStarPressed" object:nil];
-    [self addUniqueObserver:self selector:@selector(searchBarButtonWasPressed) name:@"searchBarButtonPressed" object:nil];
 }
 
 
+//this particular viewWillLayoutSubviews is needed to remove small bug using pageviewcontrollers where there's a weird scrollview inset that doesn't go away when orientation changes
+- (void)viewWillLayoutSubviews
+{
+    if (self.pageViewController.viewControllers[0] == self.firstVC) {
+        [self.pageViewController setViewControllers:@[self.firstVC]
+                       direction:UIPageViewControllerNavigationDirectionForward
+                        animated:false
+                      completion:nil];
+    }
+    else if (self.pageViewController.viewControllers[0] == self.secondVC) {
+        [self.pageViewController setViewControllers:@[self.secondVC]
+                                          direction:UIPageViewControllerNavigationDirectionForward
+                                           animated:false
+                                         completion:nil];
+    }
+}
 
 
 - (void)didReceiveMemoryWarning {
@@ -67,14 +74,10 @@
 }
 
 
-#pragma mark - Notifications Related
-- (void)addUniqueObserver:(id)observer selector:(SEL)selector name:(NSString *)name object:(id)object {
-    [[NSNotificationCenter defaultCenter] removeObserver:observer name:name object:object];
-    [[NSNotificationCenter defaultCenter] addObserver:observer selector:selector name:name object:object];
-}
-
 - (void) favStarWasPressed {
     [self.pageViewController setViewControllers:@[self.secondVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    
+    
 }
 - (void) searchBarButtonWasPressed {
     [self.pageViewController setViewControllers:@[self.firstVC] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
@@ -108,6 +111,7 @@
 {
     return 0;
 }
+
 
 
 @end

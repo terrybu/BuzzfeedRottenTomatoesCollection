@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+        
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -69,5 +69,6 @@
 - (IBAction)searchButtonPressed:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"searchBarButtonPressed" object:nil];
 }
+
 
 @end
