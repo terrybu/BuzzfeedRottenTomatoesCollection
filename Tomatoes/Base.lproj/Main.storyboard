@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Page Root Controller-->
+        <!--Root Container Controller-->
         <scene sceneID="3k2-xi-bMG">
             <objects>
-                <viewController id="Cw4-dz-7iK" customClass="RTPageRootController" sceneMemberID="viewController">
+                <viewController id="Cw4-dz-7iK" customClass="RTRootContainerController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hEz-fB-46L"/>
                         <viewControllerLayoutGuide type="bottom" id="bbq-2I-4Ai"/>
@@ -23,7 +23,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IQ7-oI-soe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-856" y="333"/>
+            <point key="canvasLocation" x="-672" y="337"/>
         </scene>
         <!--Rotten Tomatoes App-->
         <scene sceneID="ufC-wZ-h7g">
@@ -254,14 +254,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QWZ-C9-Tya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1119" y="163"/>
-        </scene>
-        <!--Page View Controller-->
-        <scene sceneID="rpc-Hi-cdM">
-            <objects>
-                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="gLg-T6-pLw" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MKc-Xe-r9r" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-856" y="-287"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8dr-O6-Cch">

@@ -9,11 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "FavoritesManager.h"
 
-@interface RTPageRootController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+@interface RTRootContainerController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
 
 @property (nonatomic, strong) FavoritesManager *favManager;
-@property (nonatomic, strong) UIPageControl *pageControl;
 
 
 @end

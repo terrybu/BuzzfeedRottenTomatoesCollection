@@ -63,8 +63,6 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:NO];
-    [self.rootVC.pageControl setHidden:NO];
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -128,7 +126,6 @@
         movieDetailVC.movie = [self.movies objectAtIndex:indexPath.row];
         movieDetailVC.favManager = self.favManager;
     }
-    [self.rootVC.pageControl setHidden:YES];
 }
 
 

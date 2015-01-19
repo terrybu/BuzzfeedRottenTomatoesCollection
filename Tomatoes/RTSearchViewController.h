@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "FavoritesManager.h"
-#import "RTPageRootController.h"
+#import "RTRootContainerController.h"
 
 @interface RTSearchViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate>
 
 @property (nonatomic, strong) FavoritesManager *favManager;
-@property (nonatomic, weak) RTPageRootController *rootVC;
+@property (nonatomic, weak) RTRootContainerController *rootVC;
 
 - (IBAction)refreshCollection:(id)sender;
 - (IBAction)favStarPressed:(id)sender;

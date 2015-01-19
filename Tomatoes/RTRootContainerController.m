@@ -6,11 +6,11 @@
 //  Copyright (c) 2015 Matt Greenwell. All rights reserved.
 //
 
-#import "RTPageRootController.h"
+#import "RTRootContainerController.h"
 #import "RTSearchViewController.h"
 #import "RTFavCollectionViewController.h"
 
-@interface RTPageRootController ()
+@interface RTRootContainerController ()
 
 @property (nonatomic, strong) NSArray *viewControllers;
 @property (nonatomic, strong) UIPageViewController *pageViewController;
@@ -18,7 +18,7 @@
 @property (nonatomic, strong) UINavigationController *secondVC;
 @end
 
-@implementation RTPageRootController
+@implementation RTRootContainerController
 
 - (FavoritesManager *) favManager {
     if (!_favManager) {
@@ -43,7 +43,6 @@
     
     //Page View Controller Setup
     self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
-    self.pageViewController.backgroundColor = [UIColor blackColor];
 
     self.pageViewController.dataSource = self;
     self.pageViewController.delegate = self;
@@ -53,13 +52,6 @@
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
     
-    //For Page Control
-    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-15, self.view.frame.size.height-30, 30, 30)];
-    self.pageControl.backgroundColor = [UIColor clearColor];
-    self.pageControl.pageIndicatorTintColor = [UIColor grayColor];
-    self.pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
-    [self.pageControl setNumberOfPages:2];
-    [self.view addSubview:self.pageControl];
     
     //Registering for notifications
     [self addUniqueObserver:self selector:@selector(favStarWasPressed) name:@"favStarPressed" object:nil];
@@ -83,11 +75,9 @@
 
 - (void) favStarWasPressed {
     [self.pageViewController setViewControllers:@[self.secondVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
-    [self.pageControl setCurrentPage:1];
 }
 - (void) searchBarButtonWasPressed {
     [self.pageViewController setViewControllers:@[self.firstVC] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
-    [self.pageControl setCurrentPage:0];
 }
 
 #pragma mark - Page View Controller Data Source
@@ -107,17 +97,6 @@
     return nil;
 }
 
-- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
-{
-    UINavigationController *currentNavController = pageViewController.viewControllers[0];
-    UIViewController *topVC = currentNavController.topViewController;
-    
-    if ([topVC isKindOfClass:[RTFavCollectionViewController class]])
-        [self.pageControl setCurrentPage:1];
-    else if ([topVC isKindOfClass:[RTSearchViewController class]])
-        [self.pageControl setCurrentPage:0];
-    
-}
 
 #pragma mark - Page Control delegate methods
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
@@ -125,7 +104,7 @@
    return 2;
 }
 
-(NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
+- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
 {
     return 0;
 }
