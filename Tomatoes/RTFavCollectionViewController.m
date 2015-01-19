@@ -67,7 +67,7 @@
 
 
 - (IBAction)searchButtonPressed:(id)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"searchBarButtonPressed" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"searchButtonPressed" object:nil];
 }
 
 

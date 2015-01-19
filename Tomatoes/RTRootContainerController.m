@@ -10,7 +10,9 @@
 #import "RTSearchViewController.h"
 #import "RTFavCollectionViewController.h"
 
-@interface RTRootContainerController ()
+@interface RTRootContainerController () {
+    int pageIndicatorFlag;
+}
 
 @property (nonatomic, strong) NSArray *viewControllers;
 
@@ -27,14 +29,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
+    //this variable is used to keep page control indicator consistent when using bar buttons to navigate instead of scrolling side to side
+    pageIndicatorFlag = 0;
+    
     //Initial Setup
     UINavigationController *first = [self.storyboard instantiateViewControllerWithIdentifier:@"firstNav"];
     UINavigationController *second = [self.storyboard instantiateViewControllerWithIdentifier:@"secondNav"];
     RTSearchViewController *search = (RTSearchViewController *) first.topViewController;
+    search.pageIndex = 0;
     RTFavCollectionViewController *fav = (RTFavCollectionViewController *) second.topViewController;
+    fav.pageIndex = 1;
     search.favManager = fav.favManager = self.favManager;
-    search.rootVC = self;
     self.firstVC = first;
     self.secondVC = second;
     
@@ -45,8 +51,32 @@
     self.viewControllers = @[self.firstVC];
     [self.pageViewController setViewControllers:self.viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    
+    [self.pageViewController willMoveToParentViewController:self];
+    [self addChildViewController:self.pageViewController];
+    
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
+    
+    //Registering for notifications
+    [self addUniqueObserver:self selector:@selector(favStarWasPressed) name:@"favStarPressed" object:nil];
+    [self addUniqueObserver:self selector:@selector(searchBarButtonWasPressed) name:@"searchButtonPressed" object:nil];
+
+}
+
+#pragma mark - Notifications Related
+- (void)addUniqueObserver:(id)observer selector:(SEL)selector name:(NSString *)name object:(id)object {
+    [[NSNotificationCenter defaultCenter] removeObserver:observer name:name object:object];
+    [[NSNotificationCenter defaultCenter] addObserver:observer selector:selector name:name object:object];
+}
+
+- (void) favStarWasPressed {
+    pageIndicatorFlag = 1;
+    [self.pageViewController setViewControllers:@[self.secondVC] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+}
+- (void) searchBarButtonWasPressed {
+    pageIndicatorFlag = 0;
+    [self.pageViewController setViewControllers:@[self.firstVC] direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
 }
 
 
@@ -74,14 +104,7 @@
 }
 
 
-- (void) favStarWasPressed {
-    [self.pageViewController setViewControllers:@[self.secondVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
-    
-    
-}
-- (void) searchBarButtonWasPressed {
-    [self.pageViewController setViewControllers:@[self.firstVC] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
-}
+
 
 #pragma mark - Page View Controller Data Source
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
@@ -101,14 +124,18 @@
 }
 
 
-#pragma mark - Page Control delegate methods
+#pragma mark - Page Control methods
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
 {
    return 2;
 }
 
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
-{
+{   if (pageIndicatorFlag == 0 || !pageIndicatorFlag)
+        return 0;
+    else if (pageIndicatorFlag == 1)
+        return 1;
+    
     return 0;
 }
 
