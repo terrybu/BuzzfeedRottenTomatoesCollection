@@ -14,6 +14,9 @@
     int pageIndicatorFlag;
 }
 
+@property (nonatomic, strong) UIPageViewController *pageViewController;
+@property (nonatomic, strong) UINavigationController *firstVC;
+@property (nonatomic, strong) UINavigationController *secondVC;
 @property (nonatomic, strong) NSArray *viewControllers;
 
 @end
@@ -86,13 +89,13 @@
     if (self.pageViewController.viewControllers[0] == self.firstVC) {
         [self.pageViewController setViewControllers:@[self.firstVC]
                        direction:UIPageViewControllerNavigationDirectionForward
-                        animated:false
+                        animated:NO
                       completion:nil];
     }
     else if (self.pageViewController.viewControllers[0] == self.secondVC) {
         [self.pageViewController setViewControllers:@[self.secondVC]
                                           direction:UIPageViewControllerNavigationDirectionForward
-                                           animated:false
+                                           animated:NO
                                          completion:nil];
     }
 }

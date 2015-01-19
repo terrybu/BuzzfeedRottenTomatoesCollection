@@ -30,6 +30,7 @@
         [self configureViewWithMovie:self.movie];
     }
     
+    //this is to avoid having the "Save" bar button appear when we are actually in the Favorites section already
     if (![[self backViewController] isKindOfClass:[RTFavCollectionViewController class]]) {
         UIBarButtonItem *favoriteSaveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
                                                                                             target:self
@@ -65,13 +66,7 @@
 
 - (void)addTapped {
     // @TODO: Add to Favorites!
-    [self.favManager.favorites addObject:self.movie];
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.favManager.favorites];
-    [defaults setObject:data forKey:@"favorites"];
-    [defaults synchronize];
-
+    [self.favManager saveToFavorites:self.movie];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

@@ -7,9 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RTMovie.h"
 
 @interface FavoritesManager : NSObject
 
 @property (nonatomic, strong) NSMutableOrderedSet *favorites;
+
+- (void) saveToFavorites: (RTMovie *) movie;
 
 @end

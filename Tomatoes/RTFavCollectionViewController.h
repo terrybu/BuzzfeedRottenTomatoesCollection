@@ -13,7 +13,6 @@
 @interface RTFavCollectionViewController : UICollectionViewController
 
 @property (nonatomic, strong) FavoritesManager *favManager;
-@property int pageIndex;
 
 - (IBAction)searchButtonPressed:(id)sender;
 

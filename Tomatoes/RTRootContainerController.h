@@ -13,8 +13,6 @@
 
 
 @property (nonatomic, strong) FavoritesManager *favManager;
-@property (nonatomic, strong) UIPageViewController *pageViewController;
-@property (nonatomic, strong) UINavigationController *firstVC;
-@property (nonatomic, strong) UINavigationController *secondVC;
+
 
 @end

@@ -26,4 +26,15 @@
     return _favorites;
 }
 
+- (void) saveToFavorites: (RTMovie *) movie {
+    [self.favorites addObject:movie];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.favorites];
+    [defaults setObject:data forKey:@"favorites"];
+    [defaults synchronize];
+
+}
+
+
+
 @end
