@@ -39,13 +39,12 @@
     
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        NSLog(@"Reachability: %@", AFStringFromNetworkReachabilityStatus(status));
         switch (status) {
             case AFNetworkReachabilityStatusReachableViaWWAN:
-                NSLog(@"WWAN");
+                NSLog(@"Network available through WWAN");
                 break;
             case AFNetworkReachabilityStatusReachableViaWiFi:
-                NSLog(@"WIFI");
+                NSLog(@"Network available through WIFI");
                 break;
             case AFNetworkReachabilityStatusNotReachable: {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No internet connection"

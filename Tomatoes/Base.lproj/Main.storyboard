@@ -86,13 +86,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="scM-m0-xbk" secondAttribute="trailing" id="1Ja-kx-FQO"/>
-                            <constraint firstItem="6fA-sg-d3v" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Jus-5z-HNa"/>
-                            <constraint firstItem="6fA-sg-d3v" firstAttribute="top" secondItem="s6L-Jf-QmF" secondAttribute="bottom" id="MlF-6s-oGY"/>
-                            <constraint firstItem="scM-m0-xbk" firstAttribute="top" secondItem="6fA-sg-d3v" secondAttribute="bottom" id="RGj-kK-xfc"/>
-                            <constraint firstItem="scM-m0-xbk" firstAttribute="bottom" secondItem="xbI-Ey-eEr" secondAttribute="top" id="aK2-ZL-s9C"/>
-                            <constraint firstItem="6fA-sg-d3v" firstAttribute="trailing" secondItem="scM-m0-xbk" secondAttribute="trailing" id="ekt-ub-7Xi"/>
-                            <constraint firstItem="6fA-sg-d3v" firstAttribute="leading" secondItem="scM-m0-xbk" secondAttribute="leading" id="glD-ai-pUd"/>
+                            <constraint firstItem="scM-m0-xbk" firstAttribute="leading" secondItem="6fA-sg-d3v" secondAttribute="leading" id="6AP-8a-HNh"/>
+                            <constraint firstAttribute="trailing" secondItem="6fA-sg-d3v" secondAttribute="trailing" id="EYb-P5-h0Q"/>
+                            <constraint firstItem="scM-m0-xbk" firstAttribute="trailing" secondItem="6fA-sg-d3v" secondAttribute="trailing" id="Int-yJ-ZVP"/>
+                            <constraint firstItem="6fA-sg-d3v" firstAttribute="top" secondItem="s6L-Jf-QmF" secondAttribute="bottom" id="Xcy-hg-VCR"/>
+                            <constraint firstItem="scM-m0-xbk" firstAttribute="bottom" secondItem="xbI-Ey-eEr" secondAttribute="top" id="cg8-Ul-kga"/>
+                            <constraint firstItem="scM-m0-xbk" firstAttribute="top" secondItem="6fA-sg-d3v" secondAttribute="bottom" id="p9d-im-ciZ"/>
+                            <constraint firstItem="6fA-sg-d3v" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="yOj-TI-3YF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Rotten Tomatoes App" id="Zha-wp-Ej3">

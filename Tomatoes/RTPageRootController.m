@@ -37,7 +37,7 @@
     RTSearchViewController *search = (RTSearchViewController *) first.topViewController;
     RTFavCollectionViewController *fav = (RTFavCollectionViewController *) second.topViewController;
     search.favManager = fav.favManager = self.favManager;
-    search.rootVC = fav.rootVC = self;
+    search.rootVC = self;
     self.firstVC = first;
     self.secondVC = second;
     
