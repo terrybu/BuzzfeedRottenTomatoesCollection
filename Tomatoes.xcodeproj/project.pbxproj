@@ -27,6 +27,7 @@
 		40F332C018777BFF00A0A70F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F332A218777BFE00A0A70F /* UIKit.framework */; };
 		40F332C818777BFF00A0A70F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 40F332C618777BFF00A0A70F /* InfoPlist.strings */; };
 		40F332CA18777BFF00A0A70F /* TomatoesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F332C918777BFF00A0A70F /* TomatoesTests.m */; };
+		AA5336561A6DBE2D005309CE /* RTKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA5336551A6DBE2D005309CE /* RTKey.plist */; };
 		AA68DA651A69C36B003EB1CA /* RTSearchCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA68DA641A69C36B003EB1CA /* RTSearchCollectionViewCell.m */; };
 		AA68DA681A6A005A003EB1CA /* FavoritesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AA68DA671A6A005A003EB1CA /* FavoritesManager.m */; };
 		AAAB5CD61A6B20DF007B0F77 /* RTRootContainerController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAB5CD51A6B20DF007B0F77 /* RTRootContainerController.m */; };
@@ -78,6 +79,7 @@
 		40F332C718777BFF00A0A70F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		40F332C918777BFF00A0A70F /* TomatoesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TomatoesTests.m; sourceTree = "<group>"; };
 		83CF8F11C56343518C8B353E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA5336551A6DBE2D005309CE /* RTKey.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RTKey.plist; sourceTree = "<group>"; };
 		AA68DA631A69C36B003EB1CA /* RTSearchCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTSearchCollectionViewCell.h; sourceTree = "<group>"; };
 		AA68DA641A69C36B003EB1CA /* RTSearchCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTSearchCollectionViewCell.m; sourceTree = "<group>"; };
 		AA68DA661A6A005A003EB1CA /* FavoritesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesManager.h; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 			children = (
 				40F332AD18777BFE00A0A70F /* RTAppDelegate.h */,
 				40F332AE18777BFE00A0A70F /* RTAppDelegate.m */,
+				AA5336551A6DBE2D005309CE /* RTKey.plist */,
 				40F332B018777BFE00A0A70F /* Main.storyboard */,
 				409E6CBD18777DCE00B8AEE3 /* View Controllers */,
 				4002451E1879C90000EE2892 /* Cells */,
@@ -355,6 +358,7 @@
 			files = (
 				40F332B718777BFE00A0A70F /* Images.xcassets in Resources */,
 				40024529187A30B400EE2892 /* Localizable.strings in Resources */,
+				AA5336561A6DBE2D005309CE /* RTKey.plist in Resources */,
 				40F332A918777BFE00A0A70F /* InfoPlist.strings in Resources */,
 				40F332B218777BFE00A0A70F /* Main.storyboard in Resources */,
 			);

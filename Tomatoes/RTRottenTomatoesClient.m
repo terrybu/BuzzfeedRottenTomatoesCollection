@@ -10,8 +10,6 @@
 
 #import "RTResponseSerializer.h"
 
-NSString * const kAPIKey = @"msu9qkjy3uqb7cdmtfh54bku";
-
 NSString * const baseURLString = @"http://api.rottentomatoes.com/api/public/v1.0/";
 
 @implementation RTRottenTomatoesClient
@@ -42,8 +40,9 @@ NSString * const baseURLString = @"http://api.rottentomatoes.com/api/public/v1.0
 //                             @"apikey" : kAPIKey};
     
     NSDictionary *params = @{@"q" : query};
-    
-    NSString *getString = [NSString stringWithFormat:@"movies.json?apikey=%@", kAPIKey];
+    NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"RTKey" ofType:@"plist"]];
+    NSString *apikey = [dictionary objectForKey:@"apikey"];
+    NSString *getString = [NSString stringWithFormat:@"movies.json?apikey=%@", apikey];
     
     [self GET:getString
         parameters:params
