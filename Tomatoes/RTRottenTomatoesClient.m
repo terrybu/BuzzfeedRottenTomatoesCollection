@@ -35,10 +35,7 @@ NSString * const baseURLString = @"http://api.rottentomatoes.com/api/public/v1.0
                       success:(void (^)(NSArray *))success
                       failure:(void (^)(NSError *))failure {
     
-    //@TODO: apikey needs to be sent with everything, so factor this out.
-//    NSDictionary *params = @{@"q" : query,
-//                             @"apikey" : kAPIKey};
-    
+    //@TODO: apikey needs to be sent with everything, so factor this out.    
     NSDictionary *params = @{@"q" : query};
     NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"RTKey" ofType:@"plist"]];
     NSString *apikey = [dictionary objectForKey:@"apikey"];

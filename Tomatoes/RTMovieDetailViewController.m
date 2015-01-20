@@ -26,12 +26,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.scrollView.contentSize = CGSizeMake(320, 520);
+    self.scrollView.contentSize = CGSizeMake(320, 500);
     
     if (self.movie != nil) {
         [self configureViewWithMovie:self.movie];
     }
     
+    [self initializeRightNavbarButton];
+
+}
+
+- (void) initializeRightNavbarButton {
     if (![[self findPreviousViewController] isKindOfClass:[RTFavCollectionViewController class]]) {
         UIBarButtonItem *favoriteSaveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
                                                                                             target:self
@@ -45,13 +50,11 @@
 }
 
 - (void)saveButtonPressed {
-    // @TODO: Add to Favorites!
     [self.favManager saveToFavorites:self.movie];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) deleteButtonPressed {
-    // Just for extra delete functionality
     [self.favManager deleteFromFavorites:self.movie];
     [self.navigationController popViewControllerAnimated:YES];
 }
