@@ -4,7 +4,14 @@
 //
 //  Created by Terry Bu on 1/17/15.
 //  Copyright (c) 2015 Matt Greenwell. All rights reserved.
-//
+
+
+//Main problem was that i forgot to remove observer for the notifications
+
+//Another Ryan and Matt's problem with this was that I used Notifications for navbar items instead of doing nav-bar actions right on the view controllers. It may have been better if i used "compound classes"
+
+
+
 
 #import "RTRootContainerController.h"
 #import "RTSearchViewController.h"
@@ -40,8 +47,13 @@
     search.favManager = fav.favManager = self.favManager;
     
     //Registering for notifications
-    [self addUniqueObserver:self selector:@selector(favStarWasPressed) name:@"favStarPressed" object:nil];
-    [self addUniqueObserver:self selector:@selector(searchBarButtonWasPressed) name:@"searchButtonPressed" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(favStarWasPressed) name:@"favStarPressed" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchBarButtonWasPressed)     name:@"searchButtonPressed" object:nil];
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"favStarPressed" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"searchButtonPressed" object:nil];
 }
 
 
@@ -140,6 +152,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"favStarPressed" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"searchButtonPressed" object:nil];
 }
 
 @end
